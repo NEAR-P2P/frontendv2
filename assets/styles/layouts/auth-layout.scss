@@ -1,0 +1,28 @@
+#auth-layout {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    min-height: max(100%, 844px);
+    // background: center no-repeat url(../../sources/images/background.png) !important;
+    background: no-repeat center conic-gradient(from 225deg at 50% 50%, #0967FE 0deg, rgba(220, 220, 220, 0.48) 120deg, #0967FE 240deg, #0967FE 360deg) !important;
+    background-size: cover !important;
+  }
+
+  //- responsive font size -//
+  & > * {
+    font-size: var(--resizer);
+  }
+  .v-main {
+    margin-bottom: var(--margin-footer);
+    & > * {
+      @include media(max, small) {
+        font-size: var(--resizer-mobile)
+      }
+    }
+  }
+}

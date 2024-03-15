@@ -1,0 +1,26 @@
+#default-layout {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    min-height: max(100dvh, 844px);
+    background: no-repeat center radial-gradient(77.96% 77.96% at 72.82% 14.45%, #F7F5F5 0%, #CED3DD 100%) !important;
+    background-size: cover !important;
+  }
+
+  //- responsive font size -//
+  & > * {
+    font-size: var(--resizer);
+  }
+  .v-main {
+    & > * {
+      @include media(max, small) {
+        font-size: var(--resizer-mobile)
+      }
+    }
+  }
+}

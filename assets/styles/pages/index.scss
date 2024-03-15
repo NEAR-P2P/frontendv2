@@ -1,0 +1,15 @@
+#home {
+  @include parent;
+  padding-inline: var(--margin-global);
+  padding-bottom: calc(var(--margin-footer-min) + 30px);
+
+
+  .v-tabs {
+    // TODO here
+  }
+
+
+  .info-card {
+    // TODO here
+  }
+}
