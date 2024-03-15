@@ -8,7 +8,7 @@
           v-for="(item, i) in socials" :key="i"
           class="btn-icon"
           :href="item.link"
-          target="_blank"
+          :target="item.target"
         >
           <img :src="item.icon" :alt="`${item.name} icon`">
         </v-btn>
@@ -39,22 +39,26 @@ export default {
         {
           icon: require("@/assets/sources/footer/github.svg"),
           name: "Github",
-          link: "",
+          link: "https://github.com/dvconsultores",
+          target: "_blank"
         },
         {
           icon: require("@/assets/sources/footer/email.svg"),
           name: "Email",
-          link: "",
+          link: "mailto:detextre4@gmail.com",
+          target: "_self"
         },
         {
           icon: require("@/assets/sources/footer/near.svg"),
           name: "Near",
           link: "",
+          target: "_blank"
         },
         {
           icon: require("@/assets/sources/footer/telegram.svg"),
           name: "Telegram",
-          link: "",
+          link: "https://t.me/+vyAd5yfzbwwwNmI5",
+          target: "_blank"
         },
       ]
     }

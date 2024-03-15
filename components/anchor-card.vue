@@ -70,7 +70,7 @@ export default {
     --c: #fff !important;
     font-family: var(--font3) !important;
     font-size: 11px !important;
-    letter-spacing: 3.9px !important;
+    letter-spacing: var(--ls, 3.9px) !important;
   }
 
   &__icon {

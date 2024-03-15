@@ -5,11 +5,44 @@
 
 
   .v-tabs {
-    // TODO here
+    overflow: hidden !important;
+    border-radius: 10px;
+    
+    .v-slide-group__prev,
+    .v-slide-group__next { display: none }
+
+    .v-tab {
+      font-family: var(--font4) !important;
+      color: #979CA6 !important;
+      font-weight: bold !important;
+      font-size: 10px !important;
+      letter-spacing: 3.9px;
+
+      &:nth-child(2) {
+        border-inline: 1px solid #fff;
+      }
+    }
   }
 
 
   .info-card {
-    // TODO here
+    h4 {
+      font-size: 10px !important;
+
+      strong {
+        line-height: 2.5ch;
+        font-size: 24px !important;
+      }
+    }
+
+    p {
+      font-size: 9px !important;
+      font-weight: 600 !important;
+
+      strong {
+        font-size: 11px !important;
+        font-weight: 700 !important;
+      }
+    }
   }
 }

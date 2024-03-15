@@ -7,9 +7,10 @@
     content: "";
     position: absolute;
     width: 100vw;
-    min-height: max(100dvh, 844px);
+    min-height: max(100%, 844px);
     background: no-repeat center radial-gradient(77.96% 77.96% at 72.82% 14.45%, #F7F5F5 0%, #CED3DD 100%) !important;
     background-size: cover !important;
+    background-attachment: fixed !important;
   }
 
   //- responsive font size -//

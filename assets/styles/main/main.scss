@@ -52,7 +52,7 @@
 
 .bg-circle {
   pointer-events: none !important;
-  position: absolute !important;
+  position: fixed !important;
   display: grid !important;
   place-items: center !important;
   top: 0 !important;
@@ -80,6 +80,7 @@
   height: var(--size) !important;
   padding: var(--p, 0) !important;
   border: var(--b, none);
+  box-shadow: var(--bs, none) !important;
   span {
     color: var(--c) !important;
     font-family: var(--font3) !important;
@@ -98,6 +99,7 @@
   min-height: var(--h);
   background: var(--bg, #000) !important;
   border-radius: var(--br, 10px) !important;
+  box-shadow: var(--bs, none) !important;
   span {
     color: var(--c) !important;
     font-family: var(--font4) !important;
@@ -107,6 +109,37 @@
     letter-spacing: 3.9px !important;
     text-transform: var(--tt, uppercase);
   }
+}
+
+.btn-outline, .v-btn.btn-outline {
+  --c: var(--primary) !important;
+  --h: 45px;
+
+  min-height: var(--h);
+  background: var(--bg, var(--card)) !important;
+  border: var(--b, 1px solid var(--primary));
+  border-radius: var(--br, 10px) !important;
+  box-shadow: var(--bs, none) !important;
+  span {
+    color: var(--c) !important;
+    font-family: var(--font4) !important;
+    font-weight: var(--fw, bold) !important;
+    font-size: var(--fs, 10px);
+    line-height: 1 !important;
+    letter-spacing: 3.9px !important;
+    text-transform: var(--tt, uppercase);
+  }
+}
+
+.dual-btn {
+  --br-dual: 10px;
+
+  display: flex;
+  border-radius: var(--br-dual);
+
+  > * { flex: 1 1 !important }
+  > :first-child { --br: var(--br-dual) 0 0 var(--br-dual) }
+  > :last-child { --br: 0 var(--br-dual) var(--br-dual) 0 }
 }
 
 .card, .v-card.card {

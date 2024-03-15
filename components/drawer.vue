@@ -19,15 +19,13 @@
 
 
     <v-list class="my-16" color="transparent">
-      <v-list-item-group color="green" mandatory>
-        <v-list-item v-for="(item, i) in navigation" :key="i">
-          <img :src="item.icon" :alt="`${item.name} icon`" style="width: 20px">
+      <v-list-item v-for="(item, i) in navigation" :key="i" :to="item.to">
+        <img :src="item.icon" :alt="`${item.name} icon`" style="width: 20px">
 
-          <v-list-item-title class="ml-3" v-text="item.name" />
+        <v-list-item-title class="ml-3" v-text="item.name" />
 
-          <v-icon size="20">mdi-chevron-right</v-icon>
-        </v-list-item>
-      </v-list-item-group>
+        <v-icon size="20">mdi-chevron-right</v-icon>
+      </v-list-item>
     </v-list>
 
 
@@ -55,7 +53,8 @@ export default {
         },
         {
           icon: require("@/assets/sources/drawer/trade.svg"),
-          name: "TRADE DETAIL"
+          name: "TRADE DETAIL",
+          to: "/trades"
         },
         {
           icon: require("@/assets/sources/drawer/place.svg"),
@@ -93,6 +92,7 @@ export default {
 
   .v-list {
     &-item, ::before { border-radius: 10px !important }
+    * { color: #000 !important }
     &-item--active {
       background-color: #000 !important;
       * { color: #fff !important }

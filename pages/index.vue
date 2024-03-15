@@ -20,16 +20,32 @@
     </navbar>
 
 
-    <!-- TODO here -->
-    <v-tabs class="not mt-3">
-      <v-tab v-for="(item, i) in tabs" :key="i">
-        {{ item }}
-      </v-tab>
+    <v-tabs
+      class="not mt-4"
+      hide-slider grow
+      background-color="#D6DAE2"
+    >
+      <v-tab
+        v-for="(item, i) in tabs" :key="i"
+      >{{ item }}</v-tab>
     </v-tabs>
 
 
     <v-card class="info-card card-outline mt-3 mb-5 pa-4" style="--br: 10px">
-      <!-- TODO here -->
+      <h4 class="mb-0">
+        NEAR<br>
+        <strong>≈$8.986</strong>
+      </h4>
+
+      <p class=my-2>
+        0.978689 NEAR<br>
+        <strong>$ 18.986</strong>
+      </p>
+
+      <p class="mb-0">
+        <strong>USD - Tether<br></strong>
+        <strong>= $0.00000</strong>
+      </p>
     </v-card>
 
 

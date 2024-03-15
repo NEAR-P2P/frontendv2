@@ -356,15 +356,16 @@
   textarea {height: var(--h-input)}
 }
 
+// TODO here
 //- input slot
 .v-text-field--solo:not(.not_vuetify, .not) {
-  --bg: var(--bg-app);
+  --bg: var(--card-2);
   --c: var(--text);
   --c-label: var(--text);
   --c-place: #6e6e6e;
-  --b: 1px solid var(--text);
+  --b: none;
   --ol: initial;
-  --br: 40px;
+  --br: 10px;
   --p: 0 12px;
   --w: initial;
   --max-w: none;
@@ -376,9 +377,9 @@
   --o-disabled: .5;
   // normal
   --fw: 700;
-  --ff: var(--font2);
+  --ff: var(--font4);
   --tt: none;
-  --ls: normal;
+  --ls: 3.9px;
   --lh: 1;
   // icon
   --fs-icon: var(--fs, 1.2em);
@@ -422,6 +423,7 @@
     transform: var(--t);
     filter: var(--f);
   }
+  &.v-input--hide-details .v-input__slot { margin-bottom: 0 !important }
   
   // testing
   & i {font-size: calc(var(--fs-icon) + .3em)}

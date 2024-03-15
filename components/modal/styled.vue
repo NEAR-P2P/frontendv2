@@ -44,6 +44,7 @@ export default {
 .modal-styled {
   isolation: isolate !important;
   position: relative !important;
+  overflow-x: hidden !important;
   background: no-repeat center radial-gradient(77.96% 77.96% at 72.82% 14.45%, #F7F5F5 0%, #CED3DD 100%) !important;
   &.colored {
     background: radial-gradient(157.01% 100% at 81.54% 9%, #0967FE 0%, rgba(220, 220, 220, 0.48) 42.71%, #D6DAE2 72.92%, #0967FE 100%) !important;
