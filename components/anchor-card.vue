@@ -66,7 +66,11 @@ export default {
 .anchor-card {
   display: flex;
 
-  span {
+  * {
+    color: #fff !important;
+  }
+
+  span:not(.not) {
     --c: #fff !important;
     font-family: var(--font3) !important;
     font-size: 11px !important;

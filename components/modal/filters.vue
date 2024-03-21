@@ -20,7 +20,7 @@
         hide-details
         on-icon="circle"
         off-icon="circle"
-        class="mt-0"
+        class="btn-radio"
         style="translate: 0 -2px;"
       />
     </h3>
@@ -32,6 +32,7 @@
       placeholder="ENTER TOTAL AMOUNT"
       hide-details solo
       class="hide-spin mb-2"
+      style="--ls: .03em; --ls-place: 3.9px"
     >
       <template #append>
         <span
@@ -49,7 +50,7 @@
       v-model="percentage"
       mandatory
       class="d-flex flex-wrap justify-space-between"
-      style="gap: 5px; background: transparent;"
+      style="gap: 10px; background: transparent;"
     >
       <v-btn
         v-for="(item, i) in [1, 5, 10, 20, 50, 100]" :key="i"
@@ -72,37 +73,60 @@
     
     <h3 class="mt-4">PAYMENT TIME LIMIT (MINUTES)</h3>
     
-    <v-btn-toggle>
-      <!-- TODO buttons here -->
+    <v-btn-toggle
+      v-model="paymentLimit" mandatory
+      class="btn-group-selector mb-4"
+    >
+      <v-btn
+        v-for="(item, i) in paymentLimits" :key="i"
+        :class="{ active: paymentLimit == i }"
+      >{{ item.name }}</v-btn>
     </v-btn-toggle>
 
-    
-    <h3 class="d-flex justify-space-between align-center">
-      PAYMENT METHOD
+    <v-tooltip top content-class="tooltip">
+      <template #activator="{ on, attrs}">
+        <h3
+          v-bind="attrs"
+          class="d-flex justify-space-between align-center"
+          v-on="on"
+        >
+          PAYMENT METHOD
 
-      <h6 class="d-flex align-center mb-0">
-        All
-        <v-checkbox
-          hide-details
-          on-icon="circle"
-          off-icon="circle"
-          class="mt-0"
-          style="translate: 0 -2px;"
-        ></v-checkbox>
-      </h6>
-    </h3>
+          <h6 class="d-flex align-center mb-0">
+            All
+            <v-checkbox
+              hide-details
+              on-icon="circle"
+              off-icon="circle"
+              class="btn-radio"
+              style="translate: 0 -2px;"
+            ></v-checkbox>
+          </h6>
+        </h3>
+      </template>
+
+      <span>Most Used Payment Method</span>
+    </v-tooltip>
 
     <v-text-field
       placeholder="SEARCH PAYMENT METHOD"
       hide-details solo
+      style="--bg: #C6C6C6; --h: 35px; --c-place: #333333"
     >
       <template #prepend-inner>
         <img src="@/assets/sources/icons/search.svg" alt="search icon" class="mr-2">
       </template>
     </v-text-field>
 
-    <v-btn-toggle>
-      <!-- TODO buttons here -->
+    <v-btn-toggle
+      v-model="paymentMethod" mandatory
+      class="btn-group-selector mt-4"
+      style="--basis: 100px"
+    >
+      <v-btn
+        v-for="(item, i) in paymentMethods" :key="i"
+        :class="{ active: paymentMethod == i }"
+      >{{ item.name }}</v-btn>
     </v-btn-toggle>
 
 
@@ -122,7 +146,57 @@ export default {
   name: "ModalFilters",
   data() {
     return {
-      percentage: undefined
+      percentage: undefined,
+      paymentLimit: 0,
+      paymentLimits: [
+        {
+          name: 'All',
+          value: 'all',
+        },
+        {
+          name: '15',
+          value: '15',
+        },
+        {
+          name: '30',
+          value: '30',
+        },
+        {
+          name: '45',
+          value: '45',
+        },
+        {
+          name: '60',
+          value: '60',
+        },
+      ],
+      paymentMethod: 0,
+      paymentMethods: [
+        {
+          name: 'All',
+          value: 'all',
+        },
+        {
+          name: 'BANCO DE VENEZUELA',
+          value: 'banco de venezuela',
+        },
+        {
+          name: 'BANESCO',
+          value: 'banesco',
+        },
+        {
+          name: 'PAGO MÓVIL',
+          value: 'pago móvil',
+        },
+        {
+          name: 'MERCANTIL',
+          value: 'mercantil',
+        },
+        {
+          name: 'PROVINCIAL',
+          value: 'provincial',
+        },
+      ]
     };
   },
   methods: {
@@ -135,28 +209,6 @@ export default {
 
 <style lang="scss">
 .modal-filters {
-  .v-input--checkbox {
-    $size: 15px;
-    i { font-size: 15px !important }
-    .v-input--selection-controls__input {
-      position: relative !important;
-      display: grid !important;
-      place-items: center !important;
-      place-content: center !important;
-    }
-
-    .v-input--selection-controls__ripple,
-    .v-input__slot {
-      left: 0 !important;
-      right: 0 !important;
-      top: 0 !important;
-      bottom: 0 !important;
-      margin: auto !important;
-      width: $size !important;
-      height: $size !important;
-    }
-  }
-
   .active {
     background: var(--primary) !important;
     span { --c: #fff !important }

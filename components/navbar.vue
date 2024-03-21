@@ -11,7 +11,7 @@
         </slot>
 
         <slot name="append">
-          <v-btn class="btn-icon" @click="$refs.drawer.showModal()">
+          <v-btn :class="{ hidden: hideAppend }" class="btn-icon" @click="$refs.drawer.showModal()">
             <img src="@/assets/sources/icons/options.svg" alt="settings">
           </v-btn>
         </slot>
@@ -33,6 +33,7 @@ export default {
   name: "NavbarComponent",
   props: {
     hidePrepend: Boolean,
+    hideAppend: Boolean,
     title: {
       type: String,
       default: undefined

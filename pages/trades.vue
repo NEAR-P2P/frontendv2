@@ -50,9 +50,12 @@
       :offer="offer"
     >
       <template #actions>
-        <v-btn class="btn mt-auto" width="114px" min-height="35px">
-          BUY
-        </v-btn>
+        <v-btn
+          class="btn mt-auto"
+          width="114px"
+          min-height="35px"
+          @click="$router.push('/trades-buy')"
+        >BUY</v-btn>
       </template>
     </offer-card>
   </div>

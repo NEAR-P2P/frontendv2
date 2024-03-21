@@ -45,7 +45,7 @@
           dot inline left
           :style="`--size: 10px; --bg: ${i == 0 ? 'var(--primary)' : '#333333'}`"
         >
-          <span style="font-family: var(--font6) !important;">
+          <span style="--c: #000; font-family: var(--font6) !important;">
             {{ item }}
           </span>
         </v-badge>
