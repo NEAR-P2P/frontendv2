@@ -25,7 +25,7 @@
       </v-select>
       
       <v-badge offset-x="10px" offset-y="10px" :value="false" content="3">
-        <v-btn class="btn-icon" style="--bg: #000; --size: 35px">
+        <v-btn class="btn-icon" style="--bg: #000; --size: 35px" @click="$router.push('/trades-chat')">
           <img src="@/assets/sources/icons/live-chat.svg" alt="chat icon">
         </v-btn>
       </v-badge>

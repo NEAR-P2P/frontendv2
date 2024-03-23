@@ -45,7 +45,8 @@ export default {
         },
         {
           icon: require("@/assets/sources/drawer/p2p.svg"),
-          name: "P2P"
+          name: "P2P",
+          to: "/trades"
         },
         {
           icon: require("@/assets/sources/drawer/pending.svg"),
@@ -53,8 +54,7 @@ export default {
         },
         {
           icon: require("@/assets/sources/drawer/trade.svg"),
-          name: "TRADE DETAIL",
-          to: "/trades"
+          name: "TRADE DETAIL"
         },
         {
           icon: require("@/assets/sources/drawer/place.svg"),
@@ -70,7 +70,8 @@ export default {
         },
         {
           icon: require("@/assets/sources/drawer/history.svg"),
-          name: "TRANSACTION HISTORY"
+          name: "TRANSACTION HISTORY",
+          to: "/history"
         },
       ]
     }
