@@ -40,12 +40,10 @@
         <v-icon color="var(--primary)">mdi-chevron-right</v-icon>
       </v-card>
 
-      <v-badge offset-x="10px" offset-y="10px">
+      <v-badge offset-x="10px" offset-y="10px" :value="true" content="3">
         <v-btn class="btn-icon" style="--bg: #000; --size: 35px">
           <img src="@/assets/sources/icons/live-chat.svg" alt="chat icon">
         </v-btn>
-
-        <template #badge>3</template>
       </v-badge>
     </aside>
 
