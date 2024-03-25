@@ -6,7 +6,7 @@ const development = process.env.NODE_ENV !== 'production'
 export default {
   env: {
     Network: process.env.Network || 'testnet',
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000/',
     URL_BACKEND: process.env.URL_BACKEND || 'http://localhost:3000',
     URL_APIP_PRICE: process.env.URL_APIP_PRICE || 'http://localhost:3000',
     URL_API_INDEXER: process.env.URL_API_INDEXER || 'http://localhost:3000',
@@ -189,8 +189,8 @@ export default {
 
   // Router property -  https://nuxtjs.org/docs/2.x/features/file-system-routing#the-router-property
   router: {
-    base: process.env.BASE_URL,
-    // base: development ? '/wallet-p2p/' : '/', //! commented
+    // base: process.env.BASE_URL,
+    base: development ? '/near-p2p/' : '/', //! commented
     // middleware: ['route-validator'],
     extendRoutes(routes, resolve) {
       routes.push({
@@ -211,7 +211,7 @@ export default {
   
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    publicPath: '/wallet-p2p/',
+    publicPath: '/near-p2p/',
     // publicPath: development ? '/wallet-p2p/' : '/', //! commented
     // TODO: read about this to fix it.
     // plugins: [
