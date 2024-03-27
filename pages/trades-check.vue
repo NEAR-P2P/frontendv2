@@ -16,7 +16,7 @@
         :items="prices"
         hide-details
         append-icon="mdi-chevron-down"
-        :menu-props="{ offsetY: 25 }"
+        :menu-props="{ offsetY: true }"
         style="--h: 35px; --fs: 20px; --fw: 400; --ff: var(--font3); --c: var(--primary); --ls: .03em"
       >
         <template #prepend-inner>

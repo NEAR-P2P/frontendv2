@@ -65,7 +65,7 @@
       v-model="payment" solo
       :items="payments"
       append-icon="mdi-chevron-down"
-      :menu-props="{ offsetY: 25 }"
+      :menu-props="{ offsetY: true }"
       style="--b: 1px solid var(--primary); --fw: 400"
     ></v-select>
   </div>

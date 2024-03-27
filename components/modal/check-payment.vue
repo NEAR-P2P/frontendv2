@@ -11,7 +11,7 @@
     </aside>
 
 
-    <v-radio-group v-model="radioGroup" hide-details>
+    <v-radio-group v-model="userSelection" hide-details>
       <v-radio
         v-for="n in 2" :key="n"
         :label="n === 1 ? 'I have not received payment from the counterparty.' : 'I have received and verified payment'"
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       model: false,
+      userSelection: null,
       warnings: [
         [true, "Log in to your receiving account to manually confirm that you have received the payment"],
         [true, "Verify that the buyer's real name on NEAR P2P matches their payment account"],
