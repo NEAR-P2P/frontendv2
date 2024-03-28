@@ -1,7 +1,7 @@
 <template>
   <modal-styled
     ref="modalStyled"
-    content-class="modal-filters"
+    content-class="modal-trades-filter"
     @open="$emit('open')"
     @close="$emit('close')"
   >
@@ -208,7 +208,7 @@ export default {
 </script>
 
 <style lang="scss">
-.modal-filters {
+.modal-trades-filter {
   .active {
     background: var(--primary) !important;
     span { --c: #fff !important }

@@ -1,6 +1,6 @@
 <template>
   <div id="trades" class="d-flex flex-column">
-    <modal-filters ref="modalFilters" />
+    <modal-trades-filter ref="modalTradesFilter" />
 
     <navbar title="TRADES" class="mb-4" />
     
@@ -38,7 +38,7 @@
         </v-btn>
         <v-btn
           class="btn-icon" style="--bg: var(--card-2)"
-          @click="$refs.modalFilters.showModal()"
+          @click="$refs.modalTradesFilter.showModal()"
         >
           <img src="@/assets/sources/icons/filter.svg" alt="filter icon">
         </v-btn>

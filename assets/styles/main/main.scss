@@ -237,13 +237,14 @@
 
 .card, .v-card.card {
   background: var(--bg, var(--primary)) !important;
+  border: var(--b, none) !important;
   border-radius: var(--br, 10px) !important;
 }
 
 .card-outline, .v-card.card-outline {
   background: var(--bg, var(--card)) !important;
   border-radius: var(--br, 20px) !important;
-  border: 1px solid #333333 !important;
+  border: var(--b, 1px solid #333333) !important;
 }
 
 .tooltip {
