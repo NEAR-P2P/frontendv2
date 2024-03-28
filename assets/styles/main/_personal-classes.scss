@@ -420,6 +420,19 @@
 .resizer {font-size: var(--resizer) !important}
 .visible { visibility: visible }
 .hidden { visibility: hidden }
+.ellipsis-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ellipsis-box {
+  --lines: initial;
+
+  display: -webkit-box;
+  -webkit-line-clamp: var(--lines);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 .hide-spin {
   input::-webkit-outer-spin-button,

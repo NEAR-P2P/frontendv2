@@ -247,6 +247,31 @@
   border: var(--b, 1px solid #333333) !important;
 }
 
+.custom-card {
+  span {
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    line-height: 10.89px !important;
+    letter-spacing: -0.01em !important;
+
+    strong { font-weight: 600 !important }
+  }
+
+  h6 {
+    --ff: var(--font3);
+    --fs: 11px;
+    --ls: 0.03em;
+    margin-bottom: 0;
+  }
+
+  h5 {
+    --ff: var(--font3);
+    --fs: 16px;
+    --lh: 16px;
+    margin-bottom: 0;
+  }
+}
+
 .tooltip {
   background-color: var(--color, #BFFBFA) !important;
   border-radius: 10px !important;

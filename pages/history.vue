@@ -24,7 +24,7 @@
       <v-window-item id="history__opened" :value="1">
         <v-card
           v-for="(item, i) in history" :key="i"
-          class="history-card card-outline pa-4 d-flex flex-column justify-center"
+          class="custom-card card-outline pa-4 d-flex flex-column justify-center"
         >
           <img
             :src="require(item.type === 'BUY' ? '@/assets/sources/icons/down-price.svg' : '@/assets/sources/icons/up-price.svg')"
@@ -33,7 +33,7 @@
           >
 
           <div class="d-flex flex-column mt-3 mb-2">
-            <span class="mb-1">{{ item.type }}</span>
+            <h6 class="mb-1">{{ item.type }}</h6>
 
             <span>Price:
               <strong>{{ item.fiat }}. {{ item.price }}</strong>
@@ -42,8 +42,8 @@
             <span><strong>{{ item.date }}</strong></span>
           </div>
 
-          <span>{{ item.amount }}</span>
-          <span>{{ item.asset }}</span>
+          <h5>{{ item.amount }}</h5>
+          <h5 style="--fs: 12px">{{ item.asset }}</h5>
         </v-card>
       </v-window-item>
 
@@ -126,7 +126,7 @@
         <section class="grid">
           <v-card
             v-for="(item, i) in history" :key="i"
-            class="history-card card-outline pa-4 d-flex flex-column justify-center"
+            class="custom-card card-outline pa-4 d-flex flex-column justify-center"
             @click="$router.push('/history-completed')"
           >
             <img
@@ -136,7 +136,7 @@
             >
 
             <div class="d-flex flex-column mt-3 mb-2">
-              <span class="mb-1">{{ item.type }}</span>
+              <h6 class="mb-1">{{ item.type }}</h6>
 
               <span>Price:
                 <strong>{{ item.fiat }}. {{ item.price }}</strong>
@@ -145,8 +145,8 @@
               <span><strong>{{ item.date }}</strong></span>
             </div>
 
-            <span>{{ item.amount }}</span>
-            <span>{{ item.asset }}</span>
+            <h5>{{ item.amount }}</h5>
+            <h5 style="--fs: 12px">{{ item.asset }}</h5>
           </v-card>
         </section>
 
@@ -165,7 +165,7 @@ export default {
   name: "HistoryPage",
   data() {
     return {
-      selection: 2,
+      selection: 1,
       history: [
         {
           price: '9.640',
