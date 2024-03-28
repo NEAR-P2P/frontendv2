@@ -13,17 +13,20 @@
       </template>
     </navbar>
 
-    <h3 class="d-flex align-center" style="gap: 10px">
-      APPLY LAST USED FILTER
+    <div class="mt-3 mb-4 d-flex align-center" style="gap: 10px;">
+      <v-label for="last-filter" class="pointer">
+        <h3 class="mb-0">APPLY LAST USED FILTER</h3>
+      </v-label>
 
       <v-checkbox
+        id="last-filter"
         hide-details
         on-icon="circle"
         off-icon="circle"
         class="btn-radio"
         style="translate: 0 -2px;"
       />
-    </h3>
+    </div>
 
 
     <h3>AMOUNT</h3>
@@ -83,30 +86,30 @@
       >{{ item.name }}</v-btn>
     </v-btn-toggle>
 
-    <v-tooltip top content-class="tooltip">
-      <template #activator="{ on, attrs}">
-        <h3
-          v-bind="attrs"
-          class="d-flex justify-space-between align-center"
-          v-on="on"
-        >
-          PAYMENT METHOD
+    <div class="d-flex justify-space-between align-center mb-2" style="gap: 10px;">
+      <v-tooltip top content-class="tooltip">
+        <template #activator="{ on, attrs}">
+          <h3
+            v-bind="attrs"
+            class="d-flex justify-space-between align-center mb-0"
+            v-on="on"
+          >
+            PAYMENT METHOD
+          </h3>
+        </template>
 
-          <h6 class="d-flex align-center mb-0">
-            All
-            <v-checkbox
-              hide-details
-              on-icon="circle"
-              off-icon="circle"
-              class="btn-radio"
-              style="translate: 0 -2px;"
-            ></v-checkbox>
-          </h6>
-        </h3>
-      </template>
+        <span>Most Used Payment Method</span>
+      </v-tooltip>
 
-      <span>Most Used Payment Method</span>
-    </v-tooltip>
+      <v-checkbox
+        hide-details
+        label="ALL"
+        on-icon="circle"
+        off-icon="circle"
+        class="btn-radio inverted ml-auto"
+        style="translate: 0 -2px;"
+      ></v-checkbox>
+    </div>
 
     <v-text-field
       placeholder="SEARCH PAYMENT METHOD"
@@ -209,6 +212,11 @@ export default {
 
 <style lang="scss">
 .modal-trades-filter {
+  > * {
+    display: flex;
+    flex-direction: column;
+  }
+
   .active {
     background: var(--primary) !important;
     span { --c: #fff !important }

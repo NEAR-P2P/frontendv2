@@ -41,7 +41,7 @@
         </aside>
 
 
-        <aside class="mt-auto d-flex align-center justify-space-between pa-4 pointer">
+        <aside class="mt-auto d-flex align-center justify-space-between pa-4 pointer" @click="$router.push('/trades-user-info')">
           <div class="d-flex flex-column">
             <span>Buyer’s Nickname</span>
             <span><strong>CRITOBETA</strong></span>

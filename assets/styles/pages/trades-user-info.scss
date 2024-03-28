@@ -1,0 +1,5 @@
+#trades-user-info {
+  @include parent;
+  padding-inline: var(--margin-global);
+  padding-bottom: calc(var(--margin-footer-min) + 30px);
+}

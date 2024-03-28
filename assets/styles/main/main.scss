@@ -190,6 +190,7 @@
 }
 
 .v-input--checkbox.btn-radio {
+  --active: #000000 !important;
   $size: 15px;
   margin-top: 0 !important;
 
@@ -206,7 +207,8 @@
     place-content: center !important;
   }
 
-  .v-input--selection-controls__ripple,
+  .v-input--selection-controls__ripple { display: none !important }
+
   .v-input__slot {
     left: 0 !important;
     right: 0 !important;
@@ -216,22 +218,16 @@
     width: $size !important;
     height: $size !important;
   }
-}
-
-.v-radio {
-  --c: #000000;
-
-  i {
-    border: var(--b, 3px solid var(--card));
-    background-color: var(--bg, #fff);
-    border-radius: 50%;
-  }
 
   label {
-    font-family: var(--ff, var(--font4)) !important;
+    font-family: var(--ff, var(--font1));
     font-size: var(--fs, 11px);
     font-weight: var(--fw, 400);
-    line-height: var(--lh, 12.1px);
+  }
+
+  &.inverted .v-input__slot {
+    flex-direction: row-reverse;
+    gap: var(--g, 0px);
   }
 }
 
