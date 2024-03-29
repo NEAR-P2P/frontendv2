@@ -33,7 +33,7 @@
     </v-card>
 
 
-    <div class="dual-btn">
+    <div class="multi-btn">
       <v-btn class="btn-outline">CANCEL</v-btn>
       <v-btn class="btn" style="--bg: var(--primary)">CONFIRM</v-btn>
     </div>

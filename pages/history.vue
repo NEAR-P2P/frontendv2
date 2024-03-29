@@ -4,7 +4,7 @@
 
     <navbar title="HISTORY" hide-append class="mb-4" />
     
-    <div class="dual-btn" style="grid-column: 2 / span 2">
+    <div class="multi-btn" style="grid-column: 2 / span 2">
       <v-btn
         :class="`btn${selection === 1 ? '' : '-outline'}`"
         :style="`--b: none; ${selection === 1 ? '--bg: var(--primary)' : '' }`"

@@ -17,7 +17,7 @@
         <span style="--ls: .08em">TETHER (USDT)</span>
       </anchor-card>
 
-      <div class="dual-btn" style="grid-column: 2 / span 2">
+      <div class="multi-btn" style="grid-column: 2 / span 2">
         <v-btn class="btn" style="--bg: var(--primary)">BUY</v-btn>
         <v-btn class="btn-outline" style="--b: none">SELL</v-btn>
       </div>

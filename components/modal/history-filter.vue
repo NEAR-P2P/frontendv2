@@ -129,7 +129,7 @@
     </aside>
 
 
-    <div class="dual-btn">
+    <div class="multi-btn">
       <v-btn class="btn-outline">
         RESET
       </v-btn>

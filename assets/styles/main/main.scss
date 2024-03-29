@@ -131,7 +131,7 @@
   }
 }
 
-.dual-btn {
+.multi-btn {
   --br-dual: 10px;
 
   display: flex;
@@ -139,6 +139,7 @@
 
   > * { flex: 1 1 !important }
   > :first-child { --br: var(--br-dual) 0 0 var(--br-dual) }
+  > :first-child ~:not(:last-child) { --br: 0 0 0 0 }
   > :last-child { --br: 0 var(--br-dual) var(--br-dual) 0 }
 }
 

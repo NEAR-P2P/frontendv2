@@ -133,7 +133,7 @@
     </v-btn-toggle>
 
 
-    <div class="dual-btn mt-16">
+    <div class="multi-btn mt-16">
       <v-btn class="btn-outline">
         RESET
       </v-btn>
