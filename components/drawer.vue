@@ -58,7 +58,8 @@ export default {
         },
         {
           icon: require("@/assets/sources/drawer/place.svg"),
-          name: "PLACE OFFER"
+          name: "PLACE OFFER",
+          to: '/offers'
         },
         {
           icon: require("@/assets/sources/drawer/account.svg"),
