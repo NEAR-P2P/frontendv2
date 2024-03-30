@@ -2,4 +2,22 @@
   @include parent;
   padding-inline: var(--margin-global);
   padding-bottom: calc(var(--margin-footer-min) + 30px);
+
+  .offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 151px), 1fr));
+    grid-auto-rows: 183px;
+    column-gap: 10px;
+    row-gap: 23px;
+    padding-bottom: 20px;
+    > :only-child { max-width: 151px !important }
+  }
+
+  .comments {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 151px), 1fr));
+    grid-auto-rows: 114px;
+    gap: 10px;
+    > :only-child { max-width: 151px !important }
+  }
 }

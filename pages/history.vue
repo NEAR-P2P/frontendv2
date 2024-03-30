@@ -82,6 +82,7 @@
             placeholder="METHOD"
             append-icon="mdi-chevron-down"
             hide-details solo
+            :menu-props="{ offsetY: true }"
             style="grid-column: span 3;"
           ></v-select>
           
@@ -89,6 +90,7 @@
             placeholder="PAIR"
             append-icon="mdi-chevron-down"
             hide-details solo
+            :menu-props="{ offsetY: true }"
             style="grid-column: span 3;"
           ></v-select>
           
@@ -96,6 +98,7 @@
             placeholder="DIRECTION"
             append-icon="mdi-chevron-down"
             hide-details solo
+            :menu-props="{ offsetY: true }"
             style="grid-column: span 3;"
           ></v-select>
           
@@ -103,6 +106,7 @@
             placeholder="DATE"
             append-icon="mdi-chevron-down"
             hide-details solo
+            :menu-props="{ offsetY: true }"
             style="grid-column: span 7;"
           ></v-select>
 

@@ -60,6 +60,7 @@
       hide-details solo
       append-icon="mdi-chevron-down"
       class="mb-2"
+      :menu-props="{ offsetY: true }"
       style="--ls: .03em; --ls-place: 3.9px"
     ></v-select>
     
@@ -68,6 +69,7 @@
       hide-details solo
       append-icon="mdi-chevron-down"
       class="mb-2"
+      :menu-props="{ offsetY: true }"
       style="--ls: .03em; --ls-place: 3.9px"
     ></v-select>
     
@@ -76,6 +78,7 @@
       hide-details solo
       append-icon="mdi-chevron-down"
       class="mb-2"
+      :menu-props="{ offsetY: true }"
       style="--ls: .03em; --ls-place: 3.9px"
     ></v-select>
     
@@ -84,6 +87,7 @@
       hide-details solo
       append-icon="mdi-chevron-down"
       style="--ls: .03em; --ls-place: 3.9px"
+      :menu-props="{ offsetY: true }"
     ></v-select>
 
 

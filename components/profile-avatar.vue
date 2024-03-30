@@ -45,6 +45,10 @@ export default {
       type: Boolean,
       default: false
     },
+    showNameV3: {
+      type: Boolean,
+      default: false
+    },
     profile: {
       type: Object,
       default: undefined
