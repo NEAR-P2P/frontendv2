@@ -131,7 +131,7 @@
   }
 }
 
-.dual-btn {
+.multi-btn {
   --br-dual: 10px;
 
   display: flex;
@@ -139,6 +139,7 @@
 
   > * { flex: 1 1 !important }
   > :first-child { --br: var(--br-dual) 0 0 var(--br-dual) }
+  > :first-child ~:not(:last-child) { --br: 0 0 0 0 }
   > :last-child { --br: 0 var(--br-dual) var(--br-dual) 0 }
 }
 
@@ -190,6 +191,7 @@
 }
 
 .v-input--checkbox.btn-radio {
+  --active: #000000 !important;
   $size: 15px;
   margin-top: 0 !important;
 
@@ -206,7 +208,8 @@
     place-content: center !important;
   }
 
-  .v-input--selection-controls__ripple,
+  .v-input--selection-controls__ripple { display: none !important }
+
   .v-input__slot {
     left: 0 !important;
     right: 0 !important;
@@ -216,34 +219,54 @@
     width: $size !important;
     height: $size !important;
   }
-}
-
-.v-radio {
-  --c: #000000;
-
-  i {
-    border: var(--b, 3px solid var(--card));
-    background-color: var(--bg, #fff);
-    border-radius: 50%;
-  }
 
   label {
-    font-family: var(--ff, var(--font4)) !important;
+    font-family: var(--ff, var(--font1));
     font-size: var(--fs, 11px);
     font-weight: var(--fw, 400);
-    line-height: var(--lh, 12.1px);
+  }
+
+  &.inverted .v-input__slot {
+    flex-direction: row-reverse;
+    gap: var(--g, 0px);
   }
 }
 
 .card, .v-card.card {
   background: var(--bg, var(--primary)) !important;
+  border: var(--b, none) !important;
   border-radius: var(--br, 10px) !important;
 }
 
 .card-outline, .v-card.card-outline {
   background: var(--bg, var(--card)) !important;
   border-radius: var(--br, 20px) !important;
-  border: 1px solid #333333 !important;
+  border: var(--b, 1px solid #333333) !important;
+}
+
+.custom-card {
+  span {
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    line-height: 10.89px !important;
+    letter-spacing: -0.01em !important;
+
+    strong { font-weight: 600 !important }
+  }
+
+  h6 {
+    --ff: var(--font3);
+    --fs: 11px;
+    --ls: 0.03em;
+    margin-bottom: 0;
+  }
+
+  h5 {
+    --ff: var(--font3);
+    --fs: 16px;
+    --lh: 16px;
+    margin-bottom: 0;
+  }
 }
 
 .tooltip {

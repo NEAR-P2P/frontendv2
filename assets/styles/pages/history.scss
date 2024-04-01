@@ -3,7 +3,23 @@
   padding-inline: var(--margin-global);
   padding-bottom: calc(var(--margin-footer-min) + 30px);
 
-  &__content {
+  .controls {
+    .v-input {
+      --h: 35px;
+      --ls: 0.05em;
+      --ff: var(--font1);
+      --p: 0 0 0 12px;
+      --fs: 11px;
+      font-size: 11px;
+    }
+
+    .v-btn {
+      --size: 35px;
+    }
+  }
+
+
+  &__opened, .grid {
     --width: 151px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--width)), 1fr));

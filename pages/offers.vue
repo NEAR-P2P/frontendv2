@@ -1,8 +1,6 @@
 <template>
-  <div id="trades" class="d-flex flex-column">
-    <modal-trades-filter ref="modalTradesFilter" />
-
-    <navbar title="TRADES" class="mb-4" />
+  <div id="offers" class="d-flex flex-column">
+    <navbar title="OFFERS" class="mb-4" />
     
     <aside clasS="mb-6" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px">
       <anchor-card rounded="10px" style="grid-row: span 2;">
@@ -45,71 +43,59 @@
       </div>
     </aside>
 
-    <offer-card
-      v-for="(offer, i) in offers" :key="i"
-      :offer="offer"
-    >
-      <template #actions>
-        <v-btn
-          class="btn mt-auto"
-          width="114px"
-          min-height="35px"
-          @click="$router.push('/trades-buy')"
-        >BUY</v-btn>
-      </template>
-    </offer-card>
+    <div class="offers">
+      <v-card
+        v-for="(item, i) in offers" :key="i"
+        class="card-outline custom-card pa-4"
+      >
+        <!-- TODO here -->
+      </v-card>
+    </div>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: "TradesPage",
+  name: "OffersPage",
   data() {
     return {
       offers: [
         {
-          name: "asd",
-          desc: "asd",
+          price: 8.986,
+          fiat: "ves",
+          asset: "USDT",
+          amount: 99.92,
+          minAmount: 50000,
+          maxAmount: 100000,
+          completed: 777,
+          reputation: 95.20,
           payments: [
             "Pago Móvil",
-            "BOD",
+            "BDV",
             "Bank Transfer (VZLA)",
-            "other"
           ]
         },
         {
-          name: "asd",
-          desc: "asd",
+          price: 8.986,
+          fiat: "ves",
+          asset: "USDT",
+          amount: 99.92,
+          minAmount: 50000,
+          maxAmount: 100000,
+          completed: 777,
+          reputation: 95.20,
           payments: [
             "Pago Móvil",
-            "BOD",
-            "Bank Transfer (VZLA)"
-          ]
-        },
-        {
-          name: "asd",
-          desc: "asd",
-          payments: [
-            "Pago Móvil",
-            "BOD",
-            "Bank Transfer (VZLA)"
-          ]
-        },
-        {
-          name: "asd",
-          desc: "asd",
-          payments: [
-            "Pago Móvil",
-            "BOD",
-            "Bank Transfer (VZLA)"
+            "BDV",
+            "Bank Transfer (VZLA)",
           ]
         },
       ]
     }
   },
   head() {
-    const title = 'Trades';
+    const title = 'Offers';
     return {
       title,
     }
@@ -117,4 +103,4 @@ export default {
 };
 </script>
 
-<style src="~/assets/styles/pages/trades.scss" lang="scss" />
+<style src="~/assets/styles/pages/offers.scss" lang="scss" />

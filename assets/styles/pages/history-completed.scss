@@ -1,0 +1,22 @@
+#history-completed {
+  @include parent;
+  padding-inline: var(--margin-global);
+  padding-bottom: calc(var(--margin-footer-min) + 30px);
+
+  .header-cards {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 153px), 1fr));
+    gap: 10px;
+
+    .v-card {
+      width: 153px;
+      height: 155px;
+    }
+    
+    .ticket-card {
+      background: center no-repeat url(../../sources/images/bg-ticket-2.png);
+      background-size: contain;
+    }
+  }
+}

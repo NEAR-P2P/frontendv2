@@ -356,7 +356,6 @@
   textarea {height: var(--h-input)}
 }
 
-// TODO here
 //- input slot
 .v-text-field--solo:not(.not_vuetify, .not) {
   --bg: var(--card-2);
@@ -486,6 +485,68 @@
   &.v-input--is-focused:not(.not_focus, .not_statement) .v-input__slot {--ol: 1px solid rgba(255, 255, 255, 0.3)}
   &.error--text:not(.not_error, .not_statement) .v-input__slot {--ol: 1px solid var(--error)}
   &.v-input--is-disabled:not(.not_disabled, .not_statement) {opacity: var(--o-disabled); pointer-events: none}
+}
+
+
+//- defaut switch -//
+.v-input--switch:not(.not_vuetify, .not) {
+  --h: 19px;
+
+  .v-input--selection-controls__ripple { display: none }
+
+  .v-input--selection-controls__input {
+    height: var(--h) !important;
+  }
+
+  .v-input--switch__track {
+    height: var(--h) !important;
+    margin-top: 1.5px;
+
+    background-color: #B9B9B9;
+    opacity: 1 !important;
+  }
+  &.primary--text .v-input--switch__track { background-color: #000000 !important }
+
+  .v-input--switch__thumb {
+    left: 3px;
+    width: var(--thumb-size, calc(var(--h) - 5px)) !important;
+    height: var(--thumb-size, calc(var(--h) - 5px)) !important;
+
+    background-color: #fff;
+  }
+
+  label {
+    font-family: var(--ff, var(--font1));
+    font-size: var(--fs, 11px);
+    font-weight: var(--fw, 400);
+  }
+
+  &.inverted .v-input__slot {
+    flex-direction: row-reverse;
+    gap: var(--g, 20px);
+  }
+}
+
+
+//- defaut radio -//
+.v-radio {
+  --active: #000000 !important;
+  --c: #000000;
+
+  i {
+    border: var(--b, 3px solid var(--card));
+    background-color: var(--bg, #fff);
+    border-radius: 50%;
+  }
+
+  label {
+    font-family: var(--ff, var(--font4)) !important;
+    font-size: var(--fs, 11px);
+    font-weight: var(--fw, 400);
+    line-height: var(--lh, 12.1px);
+  }
+
+  .v-input--selection-controls__ripple { display: none !important }
 }
 
 
