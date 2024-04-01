@@ -231,9 +231,14 @@ export default {
     //   }),
     // ],
     extend(config, ctx) {
+      
+      config.resolve.alias['node-fetch-native'] = require.resolve('node-fetch')
       config.module.rules.push({
         exclude: /(node_modules)/,
       })
+      config.node = {
+        fs: 'empty'
+      }
     },
   },
 

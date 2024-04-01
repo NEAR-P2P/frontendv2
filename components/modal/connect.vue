@@ -22,7 +22,7 @@
         v-for="(item, i) in wallets" :key="i"
         height="113px"
         :color="[0, 3, 4].includes(i) ? 'var(--primaryLight)' : undefined"
-        @click="/* item.action */ login()"
+        @click="item.action() /* login() */"
       >
         <v-img-load
           :src="item.icon"
@@ -65,40 +65,92 @@
 </template>
 
 <script>
+import { setupWalletSelector } from "@near-wallet-selector/core";
+import { setupModal } from "@near-wallet-selector/modal-ui";
+import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
+import { setupSender } from "@near-wallet-selector/sender";
+import { setupNearSnap } from "@near-wallet-selector/near-snap";
+import { setupCoin98Wallet } from "@near-wallet-selector/coin98-wallet";
+import { setupRamperWallet } from "@near-wallet-selector/ramper-wallet";
+import { setupNearMobileWallet } from "@near-wallet-selector/near-mobile-wallet"; 
+import { setupMintbaseWallet } from "@near-wallet-selector/mintbase-wallet"; 
+import { connect, keyStores, WalletConnection } from 'near-api-js';
+
+import "@near-wallet-selector/modal-ui/styles.css"
+
 export default {
   name: "ModalConnect",
   data() {
     return {
       wallets: [
         {
-          icon: require("assets/sources/wallets/my-near.svg"),
-          name: "MY NEAR WALLET",
-          action: () => {}
+          icon: require("assets/sources/logos/logo.svg"),
+          name: "WALLET P2P",
+          action: async () => {
+            try {
+              // TODO arreglar conexión a wallets sin usar el sdk
+              //  https://testnet.nearp2p.com/#/login
+            console.log(new keyStores.BrowserLocalStorageKeyStore())
+            const connectionConfig = {
+              networkId: "testnet",
+              keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+              nodeUrl: "https://rpc.testnet.near.org",
+              walletUrl: "https://testnet.nearp2p.com/#/login",
+              helperUrl: "https://helper.testnet.near.org",
+              explorerUrl: "https://testnet.nearblocks.io",
+            };
+
+            // connect to NEAR
+            const nearConnection = await connect(connectionConfig);
+
+            // create wallet connection
+            const walletConnection = new WalletConnection(nearConnection);
+            walletConnection.requestSignIn({
+              contractId: "v17.nearp2p.testnet",
+              methodNames: [], // optional
+              /* successUrl: "", // optional redirect URL on success
+              failureUrl: "", // optional redirect URL on failure */
+            });
+            } catch (error) {
+              console.log(error)
+            }
+            
+          },
         },
         {
-          icon: require("assets/sources/wallets/trust.svg"),
-          name: "TRUST WALLET",
-          action: () => {}
+          icon: require("assets/sources/wallets/arepa.svg"),
+          name: "Arepa WALLET",
+          action: () => { }
         },
         {
           icon: require("assets/sources/wallets/binance.svg"),
-          name: "BINANCE WALLET",
-          action: () => {}
-        },
-        {
-          icon: require("assets/sources/wallets/metamask.svg"),
-          name: "METAMASK",
-          action: () => {}
-        },
-        {
-          icon: require("assets/sources/wallets/nar.svg"),
-          name: "NAR WALLET",
-          action: () => {}
-        },
-        {
-          icon: require("assets/sources/wallets/near.svg"),
-          name: "NEAR WALLET",
-          action: () => {}
+          name: "Otras opciones",
+          action: async () => {
+            try {
+              const selector = await setupWalletSelector({
+              network: "testnet",
+              modules: [
+                setupMyNearWallet(),
+                setupSender(),
+                setupNearSnap(),
+                setupCoin98Wallet(),
+                setupRamperWallet(),
+                setupNearMobileWallet(),
+                setupMintbaseWallet(),
+              ],
+            });
+
+            const modal = setupModal(selector, {
+              contractId: "test.testnet",
+            });
+
+            modal.show();
+            } catch (error) {
+              this.$refs.modalAlert()
+            }
+            
+
+          }
         },
       ]
     };
@@ -110,7 +162,7 @@ export default {
     login() {
       localStorage.setItem('auth', true)
       this.$router.push('/')
+    },
     }
-  }
 };
 </script>

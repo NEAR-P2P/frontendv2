@@ -34,7 +34,7 @@
       <v-btn
         class="btn"
         @click="$refs.modalConnect.showModal()"
-      >CONNECt your WALLET</v-btn>
+      >CONNECT your WALLET</v-btn>
     </aside>
   </div>
 </template>
