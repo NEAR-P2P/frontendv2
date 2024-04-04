@@ -74,9 +74,11 @@ import { setupCoin98Wallet } from "@near-wallet-selector/coin98-wallet";
 import { setupRamperWallet } from "@near-wallet-selector/ramper-wallet";
 import { setupNearMobileWallet } from "@near-wallet-selector/near-mobile-wallet"; 
 import { setupMintbaseWallet } from "@near-wallet-selector/mintbase-wallet"; 
-import { connect, keyStores, WalletConnection } from 'near-api-js';
-
+import { connect, WalletConnection } from 'near-api-js';
+// import selector from '~/services/wallet-selector-api/selector';
 import "@near-wallet-selector/modal-ui/styles.css"
+import config from '~/services/near-api';
+
 
 export default {
   name: "ModalConnect",
@@ -88,29 +90,11 @@ export default {
           name: "WALLET P2P",
           action: async () => {
             try {
-              // TODO arreglar conexión a wallets sin usar el sdk
-              //  https://testnet.nearp2p.com/#/login
-            console.log(new keyStores.BrowserLocalStorageKeyStore())
-            const connectionConfig = {
-              networkId: "testnet",
-              keyStore: new keyStores.BrowserLocalStorageKeyStore(),
-              nodeUrl: "https://rpc.testnet.near.org",
-              walletUrl: "https://testnet.nearp2p.com/#/login",
-              helperUrl: "https://helper.testnet.near.org",
-              explorerUrl: "https://testnet.nearblocks.io",
-            };
-
-            // connect to NEAR
-            const nearConnection = await connect(connectionConfig);
-
-            // create wallet connection
-            const walletConnection = new WalletConnection(nearConnection);
-            walletConnection.requestSignIn({
-              contractId: "v17.nearp2p.testnet",
-              methodNames: [], // optional
-              /* successUrl: "", // optional redirect URL on success
-              failureUrl: "", // optional redirect URL on failure */
-            });
+              const near = await connect(config);
+                const wallet = new WalletConnection(near)
+                wallet.requestSignIn(
+                  'contract.nearbase.testnet'
+                )
             } catch (error) {
               console.log(error)
             }

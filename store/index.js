@@ -116,7 +116,7 @@ export const mutations = {
         this.$router.push(this.localePath("/"))
       }
     }
-  }
+  },
 };
 
 export const actions = {
