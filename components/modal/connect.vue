@@ -65,15 +65,6 @@
 </template>
 
 <script>
-import { setupWalletSelector } from "@near-wallet-selector/core";
-import { setupModal } from "@near-wallet-selector/modal-ui";
-import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
-import { setupSender } from "@near-wallet-selector/sender";
-import { setupNearSnap } from "@near-wallet-selector/near-snap";
-import { setupCoin98Wallet } from "@near-wallet-selector/coin98-wallet";
-import { setupRamperWallet } from "@near-wallet-selector/ramper-wallet";
-import { setupNearMobileWallet } from "@near-wallet-selector/near-mobile-wallet"; 
-import { setupMintbaseWallet } from "@near-wallet-selector/mintbase-wallet"; 
 import { connect, WalletConnection } from 'near-api-js';
 // import selector from '~/services/wallet-selector-api/selector';
 import "@near-wallet-selector/modal-ui/styles.css"
@@ -110,44 +101,14 @@ export default {
           action: () => { }
         },
         {
-          icon: require("assets/sources/logos/near-wallet-icon.svg"),
-          name: "Wallet selector",
+          icon: require("assets/sources/wallets/binance.svg"),
+          name: "Otras opciones",
           action: () => {
-            try {
-              this.modal.show();
-              
-              if(this.selector.isSignedIn()) {
-                this.login()
-              }
-
-            } catch (error) {
-              console.log(error)
-            }
+            this.$selector.modal.show();
           }
         },
       ]
     };
-  },
-  async beforeMount() {
-    this.selector = await setupWalletSelector({
-      network: "mainnet",
-      modules: [
-        setupMyNearWallet(),
-        setupSender(),
-        setupNearSnap(),
-        setupCoin98Wallet(),
-        setupRamperWallet(),
-        setupNearMobileWallet(),
-        setupMintbaseWallet(),
-      ],
-    })
-    if(this.selector.isSignedIn()) {
-      console.log(this.$router)
-      this.login()
-    }
-    this.modal = setupModal(this.selector, {
-      contractId: "v4.nearp2pdex.near",
-    })
   },
   methods: {
     showModal() {
