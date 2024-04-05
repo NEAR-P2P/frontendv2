@@ -117,7 +117,12 @@ export default {
     ['@nuxtjs/i18n'],
     '@nuxtjs/auth-next',
     'nuxt-clipboard2',
+    'nuxt-graphql-client',
   ],
+
+  graphqlClient: {
+    endpoint: process.env.VUE_APP_GRAPH_ENDPOINT, // replace with your GraphQL endpoint
+  },
 
   i18n: {
     strategy: 'no_prefix',
