@@ -70,8 +70,6 @@ import { connect, WalletConnection } from 'near-api-js';
 import "@near-wallet-selector/modal-ui/styles.css"
 import config from '~/services/near-api';
 
-
-const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
 export default {
   name: "ModalConnect",
   data() {
