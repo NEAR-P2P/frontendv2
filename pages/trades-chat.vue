@@ -3,15 +3,52 @@
     <navbar
       title="PAYMENT"
       desc="TO BE BY THE BUYER"
-      hide-prepend
+      hide-append
       class="mb-4"
     >
-      <template #append>
+      <!-- <template #append>
         <v-btn class="btn-icon" @click="$router.back()">
           <v-icon size="17">mdi-close</v-icon>
         </v-btn>
-      </template>
+      </template> -->
     </navbar>
+
+    <div class="d-flex mb-4" style="gap: 10px;">
+      <v-card class="card d-flex align-center px-4 flex-grow-1" style="--bg: var(--card)">
+        <profile-avatar
+          show-name
+          :profile="{
+            name: 'detextre4',
+            avatar: require('@/assets/sources/avatars/avatar.png'),
+            verified: true,
+          }"
+        ></profile-avatar>
+      </v-card>
+
+      <v-btn class="btn" style="--bg: var(--card)">
+        <span style="--c: var(--primary)">REPORT</span>
+      </v-btn>
+    </div>
+
+    <h3 class="mb-1">AMOUNT</h3>
+    <v-btn class="btn mb-4" style="--bg: var(--card)">
+      <span class="mr-auto" style="--c: #333">BS. 866.580</span>
+    </v-btn>
+
+
+    <p2p-chat
+    ></p2p-chat>
+
+    <v-btn
+      class="btn mt-2 mb-4"
+      style="--bg: var(--primary); --br: 30px"
+    >MARCAR PAGO REALIZADO</v-btn>
+
+    <h6 style="--ff: var(--font4); --fw: 700; --fs: 10px; --lh: 1ch">
+      APENAS TERMINE DE TRANSFERIR PUEDE HACER  CLIC
+
+      <img src="@/assets/sources/icons/warning-blue.svg" alt="info icon" class="ml-1" style="translate: 0 5px">
+    </h6>
   </div>
 </template>
 
