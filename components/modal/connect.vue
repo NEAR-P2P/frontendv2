@@ -101,14 +101,20 @@ export default {
           action: () => { }
         },
         {
-          icon: require("assets/sources/wallets/binance.svg"),
-          name: "Otras opciones",
+          icon: require("assets/sources/logos/near-wallet-icon.svg"),
+          name: "Wallet selector",
           action: () => {
             this.$selector.modal.show();
           }
         },
       ]
     };
+  },
+  beforeMount() {
+    console.log(this.$selector.selector.isSignedIn())
+    if(this.$selector.selector.isSignedIn()){
+      this.login()
+    }
   },
   methods: {
     showModal() {
