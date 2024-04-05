@@ -75,13 +75,15 @@ import { setupRamperWallet } from "@near-wallet-selector/ramper-wallet";
 import { setupNearMobileWallet } from "@near-wallet-selector/near-mobile-wallet"; 
 import { setupMintbaseWallet } from "@near-wallet-selector/mintbase-wallet"; 
 import { connect, keyStores, WalletConnection } from 'near-api-js';
-
 import "@near-wallet-selector/modal-ui/styles.css"
 
+const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
 export default {
   name: "ModalConnect",
   data() {
     return {
+      selector: undefined,        
+      modal: undefined,
       wallets: [
         {
           icon: require("assets/sources/logos/logo.svg"),
@@ -93,9 +95,9 @@ export default {
             console.log(new keyStores.BrowserLocalStorageKeyStore())
             const connectionConfig = {
               networkId: "testnet",
-              keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+              keyStore: myKeyStore,
               nodeUrl: "https://rpc.testnet.near.org",
-              walletUrl: "https://testnet.nearp2p.com/#/login",
+              walletUrl: "https://testnet.nearp2p.com/",
               helperUrl: "https://helper.testnet.near.org",
               explorerUrl: "https://testnet.nearblocks.io",
             };
@@ -111,6 +113,7 @@ export default {
               /* successUrl: "", // optional redirect URL on success
               failureUrl: "", // optional redirect URL on failure */
             });
+            this.login()
             } catch (error) {
               console.log(error)
             }
@@ -123,37 +126,44 @@ export default {
           action: () => { }
         },
         {
-          icon: require("assets/sources/wallets/binance.svg"),
-          name: "Otras opciones",
-          action: async () => {
+          icon: require("assets/sources/logos/near-wallet-icon.svg"),
+          name: "Wallet selector",
+          action: () => {
             try {
-              const selector = await setupWalletSelector({
-              network: "testnet",
-              modules: [
-                setupMyNearWallet(),
-                setupSender(),
-                setupNearSnap(),
-                setupCoin98Wallet(),
-                setupRamperWallet(),
-                setupNearMobileWallet(),
-                setupMintbaseWallet(),
-              ],
-            });
+              this.modal.show();
+              
+              if(this.selector.isSignedIn()) {
+                this.login()
+              }
 
-            const modal = setupModal(selector, {
-              contractId: "test.testnet",
-            });
-
-            modal.show();
             } catch (error) {
-              this.$refs.modalAlert()
+              console.log(error)
             }
-            
-
           }
         },
       ]
     };
+  },
+  async beforeMount() {
+    this.selector = await setupWalletSelector({
+      network: "mainnet",
+      modules: [
+        setupMyNearWallet(),
+        setupSender(),
+        setupNearSnap(),
+        setupCoin98Wallet(),
+        setupRamperWallet(),
+        setupNearMobileWallet(),
+        setupMintbaseWallet(),
+      ],
+    })
+    if(this.selector.isSignedIn()) {
+      console.log(this.$router)
+      this.login()
+    }
+    this.modal = setupModal(this.selector, {
+      contractId: "v4.nearp2pdex.near",
+    })
   },
   methods: {
     showModal() {
