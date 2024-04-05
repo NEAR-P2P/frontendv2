@@ -1,17 +1,17 @@
 import * as nearAPI from 'near-api-js'
 import Vue from 'vue'
 
-export default async function NearApi() {
+export default async function config() {
   const
     { connect, keyStores, WalletConnection } = nearAPI,
     keyStore = new keyStores.BrowserLocalStorageKeyStore(),
     config = {
-      networkId: "testnet",
+      networkId: process.eventNames.VUE_APP_NETWORK,
       keyStore, 
-      nodeUrl: "https://rpc.testnet.near.org",
+      nodeUrl: process.env.VUE_APP_NODEURL,
       walletUrl: localStorage.getItem("walletUrl"),
-      helperUrl: "https://helper.testnet.near.org",
-      explorerUrl: "https://explorer.testnet.near.org",
+      helperUrl: process.env.VUE_APP_HELPERURL,
+      explorerUrl: process.env.VUE_APP_EXPLORERURL,
     },
     // connect to NEAR
     near = await connect(config),
@@ -21,6 +21,7 @@ export default async function NearApi() {
   Vue.prototype.$wallet = wallet
   Vue.prototype.$near = near
 }
+
 
 /*   when need buy
 // create contract connection

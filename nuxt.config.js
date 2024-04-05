@@ -15,6 +15,8 @@ export default {
     URL_EXPLORER_TXS: process.env.URL_EXPLORER_TXS || 'http://localhost:3000',
     ROUTER_EXPLORER_NEAR: process.env.ROUTER_EXPLORER_NEAR || 'http://localhost:3000',
     ROUTER_RPC: process.env.ROUTER_RPC || 'http://localhost:3000',
+    VUE_APP_GLOBAL_LANG: process.env.VUE_APP_GLOBAL_LANG,
+    VUE_APP_NETWORK: process.env.VUE_APP_NETWORK,
   },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -97,6 +99,7 @@ export default {
     '~/plugins/unlock-wallet.js',
     // services
     '~/services/near-api',
+    '~/services/wallet-selector-api',
   ],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -111,11 +114,29 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/i18n',
+    ['@nuxtjs/i18n'],
     '@nuxtjs/auth-next',
     'nuxt-clipboard2',
   ],
 
+  i18n: {
+    strategy: 'no_prefix',
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en-US.js' },
+      { code: 'es', iso: 'es-VE', file: 'es-VE.js' },
+      { code: 'ru', iso: 'ru-RU', file: 'ru-RU.js' },
+      // Add other languages here...
+    ],
+    defaultLocale: process.env.VUE_APP_I18N_LOCALE || 'es',
+    langDir: '~/lang/',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      cookieAge: 365,
+      cookieCrossOrigin: false,
+      onlyOnRoot: true,  // recommended
+    },
+  },
   auth: {
     strategies: {
       google: {
@@ -136,24 +157,6 @@ export default {
     2- function to push prefix routes: localePath('/')
     3- i18n data object: $i18n.locale  --> locale language
   */
-  i18n: {
-    locales: [
-      { code: "es", iso: "es", file: "es.js" },
-      { code: "en", iso: "en", file: "en.js" }
-    ],
-    lazy: true,
-    langDir: "i18n/",
-    defaultLocale: "es",
-    vueI18nLoader: true,
-    detectBrowserLanguage: false,
-    strategy: "prefix_except_default",
-    vueI18n: {
-      fallbackLocale: "es",
-      fallbackRoot: true,
-      silentFallbackWarn: false,
-      silentTranslationWarn: false,
-    }
-  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
