@@ -65,15 +65,6 @@
 </template>
 
 <script>
-import { setupWalletSelector } from "@near-wallet-selector/core";
-import { setupModal } from "@near-wallet-selector/modal-ui";
-import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
-import { setupSender } from "@near-wallet-selector/sender";
-import { setupNearSnap } from "@near-wallet-selector/near-snap";
-import { setupCoin98Wallet } from "@near-wallet-selector/coin98-wallet";
-import { setupRamperWallet } from "@near-wallet-selector/ramper-wallet";
-import { setupNearMobileWallet } from "@near-wallet-selector/near-mobile-wallet"; 
-import { setupMintbaseWallet } from "@near-wallet-selector/mintbase-wallet"; 
 import { connect, WalletConnection } from 'near-api-js';
 // import selector from '~/services/wallet-selector-api/selector';
 import "@near-wallet-selector/modal-ui/styles.css"
@@ -109,31 +100,8 @@ export default {
         {
           icon: require("assets/sources/wallets/binance.svg"),
           name: "Otras opciones",
-          action: async () => {
-            try {
-              const selector = await setupWalletSelector({
-              network: "testnet",
-              modules: [
-                setupMyNearWallet(),
-                setupSender(),
-                setupNearSnap(),
-                setupCoin98Wallet(),
-                setupRamperWallet(),
-                setupNearMobileWallet(),
-                setupMintbaseWallet(),
-              ],
-            });
-
-            const modal = setupModal(selector, {
-              contractId: "test.testnet",
-            });
-
-            modal.show();
-            } catch (error) {
-              this.$refs.modalAlert()
-            }
-            
-
+          action: () => {
+            this.$selector.modal.show();
           }
         },
       ]
