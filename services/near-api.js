@@ -6,7 +6,7 @@ export default async function config() {
     { connect, keyStores, WalletConnection } = nearAPI,
     keyStore = new keyStores.BrowserLocalStorageKeyStore(),
     config = {
-      networkId: process.eventNames.VUE_APP_NETWORK,
+      networkId: process.env.VUE_APP_NETWORK,
       keyStore, 
       nodeUrl: process.env.VUE_APP_NODEURL,
       walletUrl: localStorage.getItem("walletUrl"),
