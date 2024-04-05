@@ -22,7 +22,7 @@
         v-for="(item, i) in wallets" :key="i"
         height="113px"
         :color="[0, 3, 4].includes(i) ? 'var(--primaryLight)' : undefined"
-        @click="/* item.action */ login()"
+        @click="item.action() /* login() */"
       >
         <v-img-load
           :src="item.icon"
@@ -65,43 +65,54 @@
 </template>
 
 <script>
+import { connect, WalletConnection } from 'near-api-js';
+// import selector from '~/services/wallet-selector-api/selector';
+import "@near-wallet-selector/modal-ui/styles.css"
+import config from '~/services/near-api';
+
 export default {
   name: "ModalConnect",
   data() {
     return {
+      selector: undefined,        
+      modal: undefined,
       wallets: [
         {
-          icon: require("assets/sources/wallets/my-near.svg"),
-          name: "MY NEAR WALLET",
-          action: () => {}
+          icon: require("assets/sources/logos/logo.svg"),
+          name: "WALLET P2P",
+          action: async () => {
+            try {
+              const near = await connect(config);
+                const wallet = new WalletConnection(near)
+                wallet.requestSignIn(
+                  'contract.nearbase.testnet'
+                )
+            } catch (error) {
+              console.log(error)
+            }
+            
+          },
         },
         {
-          icon: require("assets/sources/wallets/trust.svg"),
-          name: "TRUST WALLET",
-          action: () => {}
+          icon: require("assets/sources/wallets/arepa.svg"),
+          name: "Arepa WALLET",
+          action: () => { }
         },
         {
-          icon: require("assets/sources/wallets/binance.svg"),
-          name: "BINANCE WALLET",
-          action: () => {}
-        },
-        {
-          icon: require("assets/sources/wallets/metamask.svg"),
-          name: "METAMASK",
-          action: () => {}
-        },
-        {
-          icon: require("assets/sources/wallets/nar.svg"),
-          name: "NAR WALLET",
-          action: () => {}
-        },
-        {
-          icon: require("assets/sources/wallets/near.svg"),
-          name: "NEAR WALLET",
-          action: () => {}
+          icon: require("assets/sources/logos/near-wallet-icon.svg"),
+          name: "Wallet selector",
+          action: () => {
+            this.$selector.modal.show();
+          }
         },
       ]
     };
+  },
+  beforeMount() {
+    console.log(this.$selector.selector.isSignedIn())
+    if(this.$selector.selector.isSignedIn()){
+      this.login()
+    }
   },
   methods: {
     showModal() {
@@ -110,7 +121,7 @@ export default {
     login() {
       localStorage.setItem('auth', true)
       this.$router.push('/')
+    },
     }
-  }
 };
 </script>
