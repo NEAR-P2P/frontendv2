@@ -7,7 +7,7 @@ import { setupModal } from "@near-wallet-selector/modal-ui";
 import { setupSender } from "@near-wallet-selector/sender";
 import { setupMintbaseWallet } from "@near-wallet-selector/mintbase-wallet";
 
-export default async function selector() {
+export default async function ({app}) {
   const resSetup = await setupWalletSelector({
     network: process.env.VUE_APP_NETWORK,
     modules: [
@@ -47,7 +47,13 @@ export default async function selector() {
         contractId: process.env.VUE_APP_CONTRACT_ID,
       }),
     };
-
+    
+    app.router.beforeEach((to, from, next) => {
+      if(resSetup.isSignedIn()){
+        localStorage.setItem('auth', true)
+      }
+      return next();
+    })
     Vue.prototype.$selector = item;
 
     return item;

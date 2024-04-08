@@ -108,9 +108,8 @@ export default {
       ]
     };
   },
-  beforeMount() {
-    console.log(this.$selector.selector.isSignedIn())
-    if(this.$selector.selector.isSignedIn()){
+  async mounted() {
+    if(await this.$selector.selector.isSignedIn()){
       this.login()
     }
   },
