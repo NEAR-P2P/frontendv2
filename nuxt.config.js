@@ -17,6 +17,9 @@ export default {
     ROUTER_RPC: process.env.ROUTER_RPC || 'http://localhost:3000',
     VUE_APP_GLOBAL_LANG: process.env.VUE_APP_GLOBAL_LANG,
     VUE_APP_NETWORK: process.env.VUE_APP_NETWORK,
+    VUE_APP_CONTRACT_ID: process.env.VUE_APP_CONTRACT_ID,
+    VUE_APP_CONTRACT_NAME_USDT: process.env.VUE_APP_CONTRACT_NAME_USDT,
+    VUE_COINGECKO_API_KEY: process.env.VUE_COINGECKO_API_KEY,
   },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -98,6 +101,7 @@ export default {
     '~/plugins/vue-debounce.js',
     '~/plugins/unlock-wallet.js',
     // services
+    '~/services/near-api-config',
     '~/services/near-api',
     '~/services/wallet-selector-api',
   ],
@@ -114,11 +118,19 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/apollo',
     ['@nuxtjs/i18n'],
     '@nuxtjs/auth-next',
     'nuxt-clipboard2',
     'nuxt-graphql-client',
   ],
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:8000',
+      }
+    }
+  },
 
   graphqlClient: {
     endpoint: process.env.VUE_APP_GRAPH_ENDPOINT, // replace with your GraphQL endpoint

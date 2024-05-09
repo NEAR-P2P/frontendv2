@@ -45,7 +45,6 @@
     "near-seed-phrase": "^0.2.0",
     "nuxt": "2.17.1",
     "nuxt-clipboard2": "^0.2.1",
-    "nuxt-graphql-client": "^0.2.34",
     "nuxt-i18n": "^6.28.1",
     "parallax-js": "^3.1.0",
     "unfetch": "^5.0.0",
@@ -64,6 +63,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",
+    "@nuxtjs/apollo": "4.0.1-rc.5",
     "@nuxtjs/eslint-config": "^8.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/vuetify": "^1.12.3",
