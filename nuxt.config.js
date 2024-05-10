@@ -101,6 +101,7 @@ export default {
     '~/plugins/vue-debounce.js',
     '~/plugins/unlock-wallet.js',
     // services
+    '~/services/utils',
     '~/services/near-api-config',
     '~/services/near-api',
     '~/services/wallet-selector-api',

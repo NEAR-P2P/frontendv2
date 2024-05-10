@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
 
 function routeLogin(action) {
   if(action) {
@@ -41,6 +41,11 @@ function executeQueryRpc(_method, _params) {
     });
 }
 
+export function formatDecimals(number, decimalPlaces) {
+  const regex = new RegExp(`^-?\\d+(?:\\.\\d{0,${decimalPlaces}})?`)
+  const fixedNumber = number.match(regex)[0]
+  return fixedNumber
+}
 
 export default {
   routeLogin,

@@ -39,7 +39,7 @@
 
       <p class=my-2>
         {{ balances.near }} NEAR<br>
-        <strong>$ 18.986</strong>
+        <strong>$ {{ balances.nearInUsd }}</strong>
       </p>
 
       <p class="mb-0">
@@ -66,6 +66,7 @@
 import { connect, Contract, keyStores, utils, WalletConnection  } from 'near-api-js';
 import { nearApiConfig } from "@/services/near-api-config";
 import NearP2PApi from '@/repository/coingecko';
+import { formatDecimals } from '@/services/utils'
 
 export default {
   name: "HomePage",
@@ -94,7 +95,6 @@ export default {
   created() {
     this.getNearBalance();
     this.getBalanceUsdt();
-    this.getNearPrice();
   },
   methods: {
     // TODO maybe, refactor this functions to instanciate nearConection 
@@ -110,7 +110,11 @@ export default {
       const balance = await account.getAccountBalance();
       /* console.log("------------\n", wallet)
       console.log("------------\n", balance) */
+      await this.getNearPrice();
       this.balances.near = parseFloat(utils.format.formatNearAmount(balance.available).replace(",", ""));
+      const nearBalance = parseFloat(utils.format.formatNearAmount(balance.available)) * this.nearPrice
+      this.balances.nearInUsd = formatDecimals(nearBalance.toString(), 2)
+      
     },
     async getBalanceUsdt() {
       try {
